@@ -1,0 +1,13 @@
+mariadb: { enabled: false }
+externalDatabase:
+  host: your-mysql.cluster-xxxxx.us-east-1.rds.amazonaws.com
+  user: moodle
+  password: CHANGEME
+  database: moodle
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: lms.example.com
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt

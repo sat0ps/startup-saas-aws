@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts: [crm.example.com]
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+database:
+  host: your-mysql.cluster-xxxxx.us-east-1.rds.amazonaws.com
+  user: suitecrm
+  password: CHANGEME
+  name: suitecrm

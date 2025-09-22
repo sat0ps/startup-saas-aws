@@ -1,5 +1,5 @@
 ---
-- name: Portfolio bootstrap (AWS): ingress + cert-manager + external-dns (code only)
+- name: Portfolio bootstrap (AWS): ingress + cert-manager + external-dns + app Helm (code only)
   hosts: local
   gather_facts: false
   vars:
@@ -16,3 +16,7 @@
     - name: Install external-dns (Route53)
       ansible.builtin.import_role:
         name: external-dns
+
+    - name: Show app Helm installs (portfolio-only values)
+      ansible.builtin.import_role:
+        name: apps-helm

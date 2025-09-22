@@ -1,0 +1,21 @@
+nextcloud:
+  host: files.example.com
+ingress:
+  enabled: true
+  className: nginx
+  tls:
+    - hosts: [files.example.com]
+      secretName: nextcloud-tls
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+mariadb:
+  enabled: false
+externalDatabase:
+  enabled: true
+  type: mysql
+  host: your-mysql.cluster-xxxxx.us-east-1.rds.amazonaws.com
+  database: nextcloud
+  user: ncuser
+  password: CHANGEME
+redis:
+  enabled: true

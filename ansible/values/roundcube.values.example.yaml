@@ -1,0 +1,19 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: mail.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts: [mail.example.com]
+      secretName: roundcube-tls
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+
+config:
+  default_host: imaps://imap.yourmailhost.com
+  smtp_server: tls://smtp.yourmailhost.com
+  smtp_user: "%u"
+  smtp_pass: "%p"

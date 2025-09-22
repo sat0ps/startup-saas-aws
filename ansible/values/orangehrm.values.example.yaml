@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts: [hrms.example.com]
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+database:
+  host: your-mysql.cluster-xxxxx.us-east-1.rds.amazonaws.com
+  user: orange
+  password: CHANGEME
+  name: orangehrm
