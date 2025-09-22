@@ -1,0 +1,22 @@
+---
+# Adds the Helm repo and installs/updates ingress-nginx with a public LoadBalancer (AWS ELB/NLB).
+
+- name: Add Helm repo: ingress-nginx
+  kubernetes.core.helm_repository:
+    name: ingress-nginx
+    repo_url: https://kubernetes.github.io/ingress-nginx
+
+- name: Install/upgrade NGINX Ingress Controller (ELB/NLB)
+  kubernetes.core.helm:
+    kubeconfig: "{{ kubeconfig }}"
+    name: "{{ ingress_release_name }}"
+    chart_ref: ingress-nginx/ingress-nginx
+    chart_version: "{{ (ingress_chart_version | length > 0) | ternary(ingress_chart_version, omit) }}"
+    release_namespace: "{{ ingress_namespace }}"
+    create_namespace: true
+    wait: false
+    values:
+      controller:
+        replicaCount: 1
+        service:
+          type: LoadBalancer

@@ -1,0 +1,5 @@
+kubeconfig: "{{ lookup('env','HOME') }}/.kube/config"
+
+ingress_namespace: ingress-nginx
+ingress_release_name: ingress-nginx
+ingress_chart_version: ""

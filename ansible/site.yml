@@ -1,0 +1,10 @@
+---
+- name: Portfolio bootstrap (AWS): ingress only (code only)
+  hosts: local
+  gather_facts: false
+  vars:
+    kubeconfig: "{{ kubeconfig | default(lookup('env','KUBECONFIG') | default(lookup('env','HOME') + '/.kube/config', true)) }}"
+  tasks:
+    - name: Install NGINX ingress via Helm
+      ansible.builtin.import_role:
+        name: cluster-bootstrap
