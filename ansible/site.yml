@@ -1,5 +1,5 @@
 ---
-- name: Portfolio bootstrap (AWS): ingress + cert-manager (code only)
+- name: Portfolio bootstrap (AWS): ingress + cert-manager + external-dns (code only)
   hosts: local
   gather_facts: false
   vars:
@@ -12,3 +12,7 @@
     - name: Install cert-manager + ClusterIssuer
       ansible.builtin.import_role:
         name: cert-manager
+
+    - name: Install external-dns (Route53)
+      ansible.builtin.import_role:
+        name: external-dns

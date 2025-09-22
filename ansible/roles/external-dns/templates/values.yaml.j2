@@ -1,0 +1,15 @@
+provider: aws
+domainFilters: ["{{ external_dns.domain_filter }}"]
+policy: sync
+registry: txt
+txtOwnerId: "{{ external_dns.txtOwnerId }}"
+interval: 1m
+
+aws:
+  region: "{{ external_dns.aws.region }}"
+
+env:
+  - name: AWS_ACCESS_KEY_ID
+    value: "{{ external_dns.aws.access_key_id }}"
+  - name: AWS_SECRET_ACCESS_KEY
+    value: "{{ external_dns.aws.secret_access_key }}"

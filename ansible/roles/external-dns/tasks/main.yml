@@ -1,0 +1,15 @@
+---
+- name: Add Helm repo: external-dns
+  kubernetes.core.helm_repository:
+    name: external-dns
+    repo_url: https://kubernetes-sigs.github.io/external-dns/
+
+- name: Install/upgrade external-dns (Route53)
+  kubernetes.core.helm:
+    kubeconfig: "{{ kubeconfig }}"
+    name: external-dns
+    chart_ref: external-dns/external-dns
+    release_namespace: external-dns
+    create_namespace: true
+    wait: false
+    values: "{{ lookup('template', 'templates/values.yaml.j2') | from_yaml }}"
