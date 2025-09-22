@@ -3,3 +3,7 @@ kubeconfig: "{{ lookup('env','HOME') }}/.kube/config"
 ingress_namespace: ingress-nginx
 ingress_release_name: ingress-nginx
 ingress_chart_version: ""
+
+cluster_issuer_name: letsencrypt
+acme_email: "satyampriyam32@gmail.com"
+acme_server: "https://acme-v02.api.letsencrypt.org/directory"

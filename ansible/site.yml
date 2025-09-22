@@ -1,5 +1,5 @@
 ---
-- name: Portfolio bootstrap (AWS): ingress only (code only)
+- name: Portfolio bootstrap (AWS): ingress + cert-manager (code only)
   hosts: local
   gather_facts: false
   vars:
@@ -8,3 +8,7 @@
     - name: Install NGINX ingress via Helm
       ansible.builtin.import_role:
         name: cluster-bootstrap
+
+    - name: Install cert-manager + ClusterIssuer
+      ansible.builtin.import_role:
+        name: cert-manager
